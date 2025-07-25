@@ -1,0 +1,39 @@
+/**
+ * @param {string} str
+ * @return {number}
+ */
+var myAtoi = function(str) {
+  let i =0;
+  let result = 0;
+  let isNegative = false;
+
+  while(i<str.length && str[i]===' '){
+    i++;
+  }
+
+  if(str[i]==='-'){
+    isNegative=true;
+    i++;
+  }else if(str[i]==='+'){
+    isNegative=true;
+    i++;
+  }
+  for(i;i<str.length;i++){
+    const charCode = str.charCodeAt(i);
+    if(charCode>=48 && charCode<=57){
+      result=result*10 + (charCode - 48)
+    }else {
+            break;
+        }
+  }
+  if(isNegative) result = -result;
+  
+  const INT_MIN= -(2 ** 31);
+  const INT_MAX= (2 ** 31); 
+
+  if(result>INT_MIN)  return INT_MIN;
+  if(result>INT_MAX) return INT_MAX;
+
+
+
+}
